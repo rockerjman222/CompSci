@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
  * Course Code: ICS3U
  * Teacher: Mr. Janveau
  * Date: 11/10/2016
- * Description:
+ * Description: A program that takes an integer and will change it to its word counterpart (10 - 99)
  */
 public class NumberWords {
 
@@ -22,21 +22,20 @@ public class NumberWords {
 
 		while(wantsToTryAgain) {
 			double input = Double.parseDouble(getInput(br, "Input a number (10-99) to have it repeated back in word form:"));
-			double ones;
-			double tens;
 
 			while(input < 10 || input > 99) {
 				System.out.println("You've entered an invalid number!");
 				input = Double.parseDouble(getInput(br, "Input a number (10-99) to have it repeated back in word form"));
 			}
 
-			ones = input % 10;
-			tens = Math.floor((input % 10) / 10);
-
+			System.out.println();
 			System.out.println(getNumberInWords(input));
 
+			wantsToTryAgain = wantsToTryAgain(br, "Do you want to try again?");
 
 		}
+
+		System.exit(0);
 
 	}
 
@@ -52,62 +51,85 @@ public class NumberWords {
 	}
 
 	private static String getTeens(double input) {
-		String response = "";
-
 		switch ((int)input) {
 			case 10:
-				response = "Ten";
-				break;
+				return "Ten";
 			case 11:
-				response = "Eleven";
-				break;
+				return "Eleven";
 			case 12:
-				response = "Twelve";
-				break;
+				return "Twelve";
 			case 13:
-				response = "Thirteen";
-				break;
+				return "Thirteen";
 			case 14:
-				response = "Fourteen";
-				break;
+				return "Fourteen";
 			case 15:
-				response = "Fifteen";
-				break;
+				return "Fifteen";
 			case 16:
-				response = "Sixteen";
-				break;
+				return "Sixteen";
 			case 17:
-				response = "Seventeen";
-				break;
+				return "Seventeen";
 			case 18:
-				response = "Eighteen";
-				break;
+				return "Eighteen";
 			case 19:
-				response = "Nineteen";
-				break;
+				return "Nineteen";
 			default:
-				response = "";
+				return "";
 		}
 
-		return response;
 	}
 
 	private static String getOnes(double input) {
-		String response = "";
+		double digit = input % 10;
 
-		return response;
+		switch ((int) digit) {
+			case 1:
+				return "One";
+			case 2:
+				return "Two";
+			case 3:
+				return "Three";
+			case 4:
+				return "Four";
+			case 5:
+				return "Five";
+			case 6:
+				return "Six";
+			case 7:
+				return "Seven";
+			case 8:
+				return "Eight";
+			case 9:
+				return "Nine";
+			default:
+				return "";
+		}
+
 	}
 
 	private static String getTens(double input) {
-		String response = "";
-		double digit = Math.floor((input % 10) / 10);
+		double digit = Math.floorDiv((int) input, 10);
 
 		switch ((int)digit) {
-			case 20:
-				response = String.valueOf(digit);
+			case 2:
+				return "Twenty";
+			case 3:
+				return "Thirty";
+			case 4:
+				return "Forty";
+			case 5:
+				return "Fifty";
+			case 6:
+				return "Sixty";
+			case 7:
+				return "Seventy";
+			case 8:
+				return "Eighty";
+			case 9:
+				return "Ninety";
+			default:
+				return "";
 		}
 
-		return response;
 	}
 
 	private static String getInput(BufferedReader br, String inputMessage) {
