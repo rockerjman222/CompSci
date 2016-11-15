@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  * Course Code: ICS3U
  * Teacher: Mr. Janveau
  * Date: 11/14/2016
- * Description:
+ * Description: A program that takes an integer and will change it to its word counterpart (0 - 999)
  */
 public class NumberWordsHundreds {
 
@@ -30,7 +30,7 @@ public class NumberWordsHundreds {
 			System.out.println();
 			System.out.println(getNumberInWords(input));
 
-			//wantsToTryAgain = wantsToTryAgain(br, "Do you want to try again?");
+			wantsToTryAgain = wantsToTryAgain(br, "Do you want to try again?");
 
 		}
 
@@ -40,6 +40,7 @@ public class NumberWordsHundreds {
 
 	private static String getNumberInWords(double input) {
 		String response = "";
+
 		if (input == 0)
 			response = "Zero";
 
@@ -53,18 +54,18 @@ public class NumberWordsHundreds {
 			response = getDigit(input, 2) + " " + getDigit(input, 0);
 
 		if (input >= 100 && input <= 999)
-			response = getDigit(input, 3) + " Hundred, " + (input >= 10 && input <= 19 ? getDigit(input, 1) : getDigit(input, 2)) + " " + getDigit(input, 0);
+			response = getDigit(input, 3) + " Hundred " + (Math.floorDiv((int) input, 10) % 10 == 1 ? " " + getDigit(input, 1) : (getDigit(input, 2)) + " " + getDigit(input, 0));
 
 		return response;
 	}
 
 	private static String getDigit(double input, int state) {
-		/** state:
+		/* state:
 		 * 	0 = ones
 		 * 	1 = teens
 		 * 	2 = tens
 		 * 	3 = hundreds
-		 **/
+		 */
 
 		int digit = 0;
 		boolean isOnes = true;
@@ -89,6 +90,8 @@ public class NumberWordsHundreds {
 				break;
 			case 2:
 				digit = Math.floorDiv((int) input, 10);
+				if (digit > 9)
+					digit = digit % 10;
 				isOnes = false;
 				isTeens = false;
 				isTens = true;
@@ -102,9 +105,6 @@ public class NumberWordsHundreds {
 				isHundreds = true;
 				break;
 		}
-
-		System.out.println(digit);
-
 
 		switch (digit) {
 			case 0:

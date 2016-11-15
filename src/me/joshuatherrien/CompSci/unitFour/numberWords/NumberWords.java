@@ -1,6 +1,5 @@
 package me.joshuatherrien.CompSci.unitFour.numberWords;
 
-import java.awt.im.InputContext;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
