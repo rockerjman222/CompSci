@@ -40,93 +40,78 @@ public class NumberWords {
 
 	private static String getNumberInWords(double input) {
 		String response = "";
-		if(input >= 10 && input <= 19)
-			response = getTeens(input);
 
-		if(input >= 20 && input <= 99)
-			response = getTens(input) + " " + getOnes(input);
+		if (input >= 1 && input <= 9)
+			response = getDigit(input, 0);
+
+		if (input >= 10 && input <= 19)
+			response = getDigit(input, 1);
+
+		if (input >= 20 && input <= 99)
+			response = getDigit(input, 2) + " " + getDigit(input, 0);
 
 		return response;
 	}
 
-	private static String getTeens(double input) {
-		switch ((int)input) {
-			case 10:
-				return "Ten";
-			case 11:
-				return "Eleven";
-			case 12:
-				return "Twelve";
-			case 13:
-				return "Thirteen";
-			case 14:
-				return "Fourteen";
-			case 15:
-				return "Fifteen";
-			case 16:
-				return "Sixteen";
-			case 17:
-				return "Seventeen";
-			case 18:
-				return "Eighteen";
-			case 19:
-				return "Nineteen";
-			default:
-				return "";
-		}
+	private static String getDigit(double input, int state) {
+		/* state:
+		 * 	0 = ones
+		 * 	1 = teens
+		 * 	2 = tens
+		 */
 
-	}
+		int digit = 0;
+		boolean isOnes = true;
+		boolean isTeens = false;
+		boolean isTens = false;
 
-	private static String getOnes(double input) {
-		double digit = input % 10;
-
-		switch ((int) digit) {
+		switch (state) {
+			case 0:
+				digit = (int) input % 10;
+				isOnes = true;
+				isTeens = false;
+				isTens = false;
+				break;
 			case 1:
-				return "One";
+				digit = (int) input % 10;
+				isOnes = false;
+				isTeens = true;
+				isTens = false;
+				break;
 			case 2:
-				return "Two";
-			case 3:
-				return "Three";
-			case 4:
-				return "Four";
-			case 5:
-				return "Five";
-			case 6:
-				return "Six";
-			case 7:
-				return "Seven";
-			case 8:
-				return "Eight";
-			case 9:
-				return "Nine";
-			default:
-				return "";
+				digit = Math.floorDiv((int) input, 10);
+				if (digit > 9)
+					digit = digit % 10;
+				isOnes = false;
+				isTeens = false;
+				isTens = true;
+				break;
 		}
 
-	}
-
-	private static String getTens(double input) {
-		double digit = Math.floorDiv((int) input, 10);
-
-		switch ((int)digit) {
+		switch (digit) {
+			case 0:
+				return isTeens ? "Ten" : "";
+			case 1:
+				return isOnes ? "One" : isTeens ? "Eleven" : isTens ? "" : "";
 			case 2:
-				return "Twenty";
+				return isOnes ? "Two" : isTeens ? "Twelve" : isTens ? "Twenty" : "";
 			case 3:
-				return "Thirty";
+				return isOnes ? "Three" : isTeens ? "Thirteen" : isTens ? "Thirty" : "";
 			case 4:
-				return "Forty";
+				return isOnes ? "Four" : isTeens ? "Fourteen" : isTens ? "Forty" : "";
 			case 5:
-				return "Fifty";
+				return isOnes ? "Five" : isTeens ? "Fifteen" : isTens ? "Fifty" : "";
 			case 6:
-				return "Sixty";
+				return isOnes ? "Six" : isTeens ? "Sixteen" : isTens ? "Sixty" : "";
 			case 7:
-				return "Seventy";
+				return isOnes ? "Seven" : isTeens ? "Seventeen" : isTens ? "Seventy" : "";
 			case 8:
-				return "Eighty";
+				return isOnes ? "Eight" : isTeens ? "Eighteen" : isTens ? "Eighty" : "";
 			case 9:
-				return "Ninety";
+				return isOnes ? "Nine" : isTeens ? "Nineteen" : isTens ? "Ninety" : "";
 			default:
 				return "";
+
 		}
 
 	}
@@ -168,4 +153,6 @@ public class NumberWords {
 		}
 
 	}
+
+
 }
