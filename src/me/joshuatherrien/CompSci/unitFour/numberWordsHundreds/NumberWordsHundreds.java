@@ -1,4 +1,4 @@
-package me.joshuatherrien.CompSci.unitFour.numberWords;
+package me.joshuatherrien.CompSci.unitFour.numberWordsHundreds;
 
 import java.io.BufferedReader;
 import java.io.IOException;

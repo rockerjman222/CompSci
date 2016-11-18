@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  * Course Code: ICS3U
  * Teacher: Mr. Janveau
  * Date: 11/10/2016
- * Description: A program that takes an integer and will change it to its word counterpart (10 - 99)
+ * Description: A program that takes an integer and will change it to its word counterpart (1 - 99)
  */
 public class NumberWords {
 
@@ -17,14 +17,14 @@ public class NumberWords {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		boolean wantsToTryAgain = true;
 
-		System.out.println("Numbers to Words (10-99)");
+		System.out.println("Numbers to Words (1-99)");
 
 		while(wantsToTryAgain) {
-			double input = Double.parseDouble(getInput(br, "Input a number (10-99) to have it repeated back in word form:"));
+			double input = Double.parseDouble(getInput(br, "Input a number (1-99) to have it repeated back in word form:"));
 
-			while(input < 10 || input > 99) {
+			while (input < 1 || input > 99) {
 				System.out.println("You've entered an invalid number!");
-				input = Double.parseDouble(getInput(br, "Input a number (10-99) to have it repeated back in word form"));
+				input = Double.parseDouble(getInput(br, "Input a number (1-99) to have it repeated back in word form"));
 			}
 
 			System.out.println();

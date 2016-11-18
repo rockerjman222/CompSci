@@ -54,7 +54,7 @@ public class Compass {
 	}
 
 	private static double getDegree(String s) {
-		return Double.valueOf(s.substring(1, s.length() - 1));
+		return Double.parseDouble(s.substring(1, s.length() - 1));
 	}
 
 	private static String getInput(BufferedReader br) {
