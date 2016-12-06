@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  * Course Code: ICS3U
  * Teacher: Mr. Janveau
  * Date: 11/7/2016
- * Description:
+ * Description: This program will count the vowels in a given word
  */
 public class CountVowels {
 
