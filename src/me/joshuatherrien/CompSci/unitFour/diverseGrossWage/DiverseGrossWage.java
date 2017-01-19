@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
  * Course Code: ICS3U
  * Teacher: Mr. Janveau
  * Date: 12/6/2016
- * Description:
+ * Description: calculates the gross wage given the hours and rate of pay, also compares the wage to other countries
  */
 public class DiverseGrossWage {
 
