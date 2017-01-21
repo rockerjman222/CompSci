@@ -20,12 +20,15 @@ public class Frame extends JPanel {
 	public static GuessNumber guessNumber;
 
 	public static void main(String[] args) {
+		//Define all frames of the window
 		menu = new Frame();
 		rockPaperScissors = new RockPaperScissors();
 		guessNumber = new GuessNumber();
 
+		//Initialize the main window
 		frame = new JFrame("Computer Science Final CCT");
 
+		//Give the window some information for its appearence
 		frame.setSize(new Dimension(705, 500));
 		frame.setBackground(Color.black);
 		frame.setTitle("Computer Science Final CCT");
@@ -40,20 +43,24 @@ public class Frame extends JPanel {
 	public JPanel getPanel() {
 		JPanel panel = new JPanel();
 
+		//Push all the information for handling the frames to a separate thread from the main, this prevents the program from getting completely locked up with a bad frame
 		SwingUtilities.invokeLater(() -> {
+
+			//Define the buttons to go to the different frames
 			JButton btnRockPaperScissors = new JButton("Rock Paper Scissors");
 			JButton btnGuessNumber = new JButton("Guess Number");
 			JButton btnExit = new JButton("Exit Program");
 
-			JLabel intro = new JLabel("This is a test paragraph, this is a test paragraph, this is a test paragraph, this is a test paragraph, this is a test paragraph, this is a test paragraph, this is a test paragraph, this is a test paragraph, this is a test paragraph,", SwingConstants.CENTER);
-
+			//Set the layout to null so the components can be placed to my choosing
 			panel.setLayout(null);
+
+			//Set the location for all components
 
 			btnRockPaperScissors.setBounds(10, 410, 215, 30);
 			btnGuessNumber.setBounds(235, 410, 215, 30);
 			btnExit.setBounds(460, 410, 215, 30);
 
-
+			//Recieve the click of the buttons and dispatch them each to their respective actions
 			btnRockPaperScissors.addActionListener(e -> {
 				panel.removeAll();
 				panel.revalidate();
@@ -68,6 +75,7 @@ public class Frame extends JPanel {
 				setCurrentPanel(guessNumber.getPanel());
 			});
 
+			//Exit the program with a button because it's fun.
 			btnExit.addActionListener(e -> {
 				panel.removeAll();
 				panel.revalidate();
@@ -75,12 +83,12 @@ public class Frame extends JPanel {
 				System.exit(0);
 			});
 
+			//Add all components to the panel
 			panel.add(btnRockPaperScissors);
 			panel.add(btnGuessNumber);
 			panel.add(btnExit);
 
-			panel.add(intro);
-
+			//Refresh the panel, this is more for the returning to the panel from other frames, without this the panel will be blank upon returning.
 			revalidate();
 			repaint();
 
@@ -90,6 +98,7 @@ public class Frame extends JPanel {
 		return panel;
 	}
 
+	//Set the current viewing panel for the program
 	public void setCurrentPanel(JPanel panel) {
 		if (currentPanel == panel)
 			return;
