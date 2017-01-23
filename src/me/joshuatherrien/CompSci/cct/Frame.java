@@ -17,13 +17,13 @@ public class Frame extends JPanel {
 
 	public static Frame menu;
 	public static RockPaperScissors rockPaperScissors;
-	public static GuessNumber guessNumber;
+	public static ReduceFraction reduceFraction;
 
 	public static void main(String[] args) {
 		//Define all frames of the window
 		menu = new Frame();
 		rockPaperScissors = new RockPaperScissors();
-		guessNumber = new GuessNumber();
+		reduceFraction = new ReduceFraction();
 
 		//Initialize the main window
 		frame = new JFrame("Computer Science Final CCT");
@@ -48,7 +48,7 @@ public class Frame extends JPanel {
 
 			//Define the buttons to go to the different frames
 			JButton btnRockPaperScissors = new JButton("Rock Paper Scissors");
-			JButton btnGuessNumber = new JButton("Guess Number");
+			JButton btnGuessNumber = new JButton("Reduce Fractions");
 			JButton btnExit = new JButton("Exit Program");
 
 			//Set the layout to null so the components can be placed to my choosing
@@ -72,7 +72,7 @@ public class Frame extends JPanel {
 				panel.removeAll();
 				panel.revalidate();
 				panel.repaint();
-				setCurrentPanel(guessNumber.getPanel());
+				setCurrentPanel(reduceFraction.getPanel());
 			});
 
 			//Exit the program with a button because it's fun.
